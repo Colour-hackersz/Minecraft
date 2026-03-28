@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN apt update && apt install -y openjdk-17-jdk curl
+RUN apt update && apt install -y openjdk-17-jdk curl wget unzip
 
 CMD ["bash", "start.sh"]
