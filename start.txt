@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "Starting Minecraft server..."
+
+accept eula
+
+echo "eula=true" > eula.txt
+
+install dependencies
+
+apt update
+apt install -y openjdk-17-jdk curl
+
+install playit
+
+curl -SsL https://playit.cloud/setup.sh | bash
+
+start tunnel
+
+./playit &
+
+run server (auto restart)
+
+while true
+do
+java -Xms1G -Xmx2G -jar server.jar nogui
+echo "Restarting in 5 seconds..."
+sleep 5
+done
